@@ -1,0 +1,29 @@
+{
+	"name": "@nandn/loc",
+	"version": "0.1.*",
+	"description": "A package for localization",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"prepare": "npm run build"
+	},
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"localization",
+		"i18n",
+		"internationalization",
+		"loc"
+	],
+	"author": "Nandan Reddy",
+	"license": "ISC",
+	"peerDependencies": {
+		"react": ">=18.0.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.58",
+		"typescript": "^5.3.3"
+	}
+}

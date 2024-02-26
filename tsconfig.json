@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "ES2015",
+		"module": "commonjs",
+		"jsx": "react",
+		"strict": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+
+		"declaration": false,
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"noImplicitAny": true
+	},
+	"include": ["src/**/*.tsx", "src/**/*.ts"]
+}
