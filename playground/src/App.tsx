@@ -1,5 +1,5 @@
-// import { LocalizationProvider } from '@nandn/loc';
-import { LocalizationProvider } from '../../src/LocalizationContext';
+import { LocalizationProvider } from '@nandn/loc';
+// import { LocalizationProvider } from '../../src/LocalizationContext';
 import './App.css';
 import Header from './components/Header';
 

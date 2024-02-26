@@ -1,6 +1,6 @@
-import useLocalization from '../../../src/useLocalization';
+// import useLocalization from '../../../src/useLocalization';
 
-// import { useLocalization } from '@nandn/loc';
+import { useLocalization } from '@nandn/loc';
 
 const Header: React.FC = () => {
 	const { loc, changeLang } = useLocalization();
