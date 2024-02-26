@@ -17,7 +17,7 @@ export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 	children,
 }) => {
 	const { curLang, defaultLang, languages } = config;
-	const [lang, setLang] = useState(config.curLang);
+	const [lang, setLang] = useState(curLang);
 	const defaultLangTranslations = languages.find(
 		(language) => language['@locale'] === defaultLang
 	);
@@ -70,9 +70,7 @@ export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 		<LocalizationContext.Provider
 			value={{
 				loc: finalTranslations,
-				changeLang: (lang) => {
-					setLang(lang);
-				},
+				changeLang: setLang,
 				curLang: lang,
 			}}
 		>
