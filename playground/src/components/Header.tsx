@@ -18,7 +18,7 @@ const Header: React.FC = () => {
 			>
 				Learn React
 			</a>
-			<p>{loc.welcome}</p>
+			<p>{loc.welcome.toString()}</p>
 			<br />
 			<button onClick={() => changeLang('en')}>English</button>
 			<button onClick={() => changeLang('es')}>Spanish</button>
