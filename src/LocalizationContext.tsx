@@ -1,14 +1,12 @@
 import React, { createContext } from 'react';
 import { LocalizationConfig } from './types/LocalizationConfig';
-import { LocalizationFunction } from './types/LocalizationFunction';
 
 export interface LocalizationContextProps {
 	config: LocalizationConfig;
 	children: React.ReactNode;
 }
 
-export const LocalizationContext =
-	createContext<LocalizationFunction<string> | null>(null);
+export const LocalizationContext = createContext<Object | null>(null);
 
 export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 	config,
@@ -24,21 +22,29 @@ export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 			`The default language "${defaultLang}" is not available in the list of languages.`
 		);
 	}
-	const langTrans = languages.find((lang) => lang['@locale'] === curLang);
+
+	let currentLangTranslations = languages.find(
+		(lang) => lang['@locale'] === curLang
+	);
 	// Verify if the current language is available in the list of languages. If not use the default language and throw a warning.
-	if (langTrans === undefined) {
+	if (currentLangTranslations === undefined) {
 		console.warn(
 			`The current language "${curLang}" is not available in the list of languages. Using the default language "${defaultLang}" instead.`
 		);
+		currentLangTranslations = defaultLangTranslations;
 	}
 
-	const curLangTranslations = langTrans || defaultLangTranslations;
-
-	const locFn: LocalizationFunction<string> = (key) => {
-		curLangTranslations;
+	const finalTranslations = {};
+	for (const key in defaultLangTranslations) {
+		const finalTranslations: {
+			[key: string]: string | ((...args: any[]) => string);
+		} = {};
 		const translation =
-			curLangTranslations[key] || defaultLangTranslations[key] || '[ERR]';
-		if (typeof translation === 'string') return translation;
+			currentLangTranslations[key] || defaultLangTranslations[key] || '[ERR]';
+		if (typeof translation === 'string') {
+			finalTranslations[key] = translation;
+			continue;
+		}
 		let returnString = translation.text;
 		for (const placeholder of translation.placeholders) {
 			returnString = returnString.replace(
@@ -49,11 +55,11 @@ export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 		const fnTemplate = `(${translation.placeholders.join(
 			', '
 		)}) => \`${returnString}\``;
-		return eval(fnTemplate);
-	};
+		finalTranslations[key] = eval(fnTemplate);
+	}
 
 	return (
-		<LocalizationContext.Provider value={locFn}>
+		<LocalizationContext.Provider value={finalTranslations}>
 			{children}
 		</LocalizationContext.Provider>
 	);

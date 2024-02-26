@@ -12,22 +12,4 @@ export type TranslationsJSON<L extends string = string> = {
 export interface TranslationConfig {
 	text: string;
 	placeholders: string[];
-	// placeholders: {
-	// 	[key: string]: {
-	// 		type: 'string'; // | 'number' | 'bool';
-	// 	};
-	// };
 }
-
-// const translations: TranslationsJSON<'en' | 'te'> = {
-// 	'@locale': 'en',
-// 	hello: {
-// 		text: 'Hello {name}',
-// 		placeholders: {
-// 			name: {
-// 				type: 'string',
-// 			},
-// 		},
-// 	},
-// };
-// translations;
