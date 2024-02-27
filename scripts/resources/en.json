@@ -1,0 +1,17 @@
+{
+	"@locale": "en",
+	"title": "Hello, World!",
+	"greetings": {
+		"text": "Good morning {firstName} {lastName}!",
+		"placeholders": ["firstName", "lastName"]
+	},
+	"message": "This is a simple example of a localized JSON file.",
+	"score": {
+		"text": "You scored {score} points!",
+		"placeholders": ["score"]
+	},
+	"welcome": {
+		"text": "Welcome, {name}!",
+		"placeholders": ["name"]
+	}
+}
