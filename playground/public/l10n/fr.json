@@ -1,0 +1,11 @@
+{
+	"@locale": "fr",
+	"headerEnglish": "Anglais",
+	"headerSpanish": "Espagnol",
+	"headerFrench": "Français",
+	"bodyLearnReact": "Apprendre React",
+	"bodyEditAndSave": {
+		"text": "Modifiez {filename} et enregistrez pour recharger.",
+		"placeholders": ["filename"]
+	}
+}

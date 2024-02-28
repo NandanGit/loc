@@ -2,37 +2,27 @@ import { LocalizationProvider } from '@nandn/loc';
 // import { LocalizationProvider } from '../../src/LocalizationContext';
 import './App.css';
 import Header from './components/Header';
+import { Body } from './components/Body';
+
+import enTrans from './assets/l10n/en.json';
+import esTrans from './assets/l10n/es.json';
+import frTrans from './assets/l10n/fr.json';
 
 function App() {
+	// console.log('enTrans:', enTrans);
+	// console.log('esTrans:', esTrans);
+	// console.log('frTrans:', frTrans);
 	return (
 		<LocalizationProvider
 			config={{
-				curLang: 'es',
+				curLang: 'en',
 				defaultLang: 'en',
-				languages: [
-					{
-						'@locale': 'en',
-						welcome: 'Welcome to the app!',
-						welcomeHome: 'Welcome home!',
-						score: {
-							text: 'Your score is {score}',
-							placeholders: ['score'],
-						},
-					},
-					{
-						'@locale': 'es',
-						welcome: '¡Bienvenido a la aplicación!',
-						score: {
-							text: 'Tu puntaje es {score}',
-							placeholders: ['score'],
-						},
-					},
-				],
+				languages: [enTrans, esTrans, frTrans],
 			}}
 		>
-			<div className='App'>
-				<Header />
-			</div>
+			<Header />
+			<br />
+			<Body />
 		</LocalizationProvider>
 	);
 }

@@ -1,0 +1,12 @@
+{
+	"@locale": "en",
+	"headerEnglish": "English",
+	"headerSpanish": "Spanish",
+	"headerFrench": "French",
+	"bodyLearnReact": "Learn React",
+	"bodyEditAndSave": {
+		"text": "Edit {filename} and save to reload.",
+		"placeholders": ["filename"]
+	},
+	"bodyKnowMore": "Know More"
+}

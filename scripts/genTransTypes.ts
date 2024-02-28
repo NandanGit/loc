@@ -55,6 +55,6 @@ const genTransTypes = (
 };
 
 genTransTypes(
-	path.join(__dirname, './resources/en.json'),
-	path.join(__dirname, './outputs/')
+	path.join(__dirname, '../playground/src/assets/l10n/en.json'),
+	path.join(__dirname, '../playground/src/types')
 );

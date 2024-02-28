@@ -1,27 +1,16 @@
 // import useLocalization from '../../../src/useLocalization';
 
 import { useLocalization } from '@nandn/loc';
+import useLoc from '../hooks/useLoc';
 
 const Header: React.FC = () => {
-	const { loc, changeLang } = useLocalization();
-	console.log(loc.welcome);
+	const { changeLang } = useLocalization();
+	const loc = useLoc();
 	return (
 		<header className='App-header'>
-			<p>
-				Edit <code>src/App.tsx</code> and save to reload.
-			</p>
-			<a
-				className='App-link'
-				href='https://reactjs.org'
-				target='_blank'
-				rel='noopener noreferrer'
-			>
-				Learn React
-			</a>
-			<p>{loc.welcome.toString()}</p>
-			<br />
-			<button onClick={() => changeLang('en')}>English</button>
-			<button onClick={() => changeLang('es')}>Spanish</button>
+			<button onClick={() => changeLang('en')}>{loc.headerEnglish}</button>
+			<button onClick={() => changeLang('es')}>{loc.headerSpanish}</button>
+			<button onClick={() => changeLang('fr')}>{loc.headerFrench}</button>
 		</header>
 	);
 };
