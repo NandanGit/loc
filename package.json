@@ -12,6 +12,9 @@
 	"files": [
 		"dist"
 	],
+	"bin": {
+		"loc": "dist/cli/index.js"
+	},
 	"keywords": [
 		"localization",
 		"i18n",
@@ -31,6 +34,7 @@
 		"typescript": "^5.3.3"
 	},
 	"dependencies": {
-		"@nandn/loc": "^0.1.2"
+		"@nandn/loc": "^0.1.2",
+		"commander": "^12.0.0"
 	}
 }
