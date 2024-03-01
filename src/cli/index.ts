@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Command } from 'commander';
 import genInterface from './generators/genInterface';
 
@@ -17,14 +19,12 @@ program
 		) => {
 			// input is the input file path
 			// output is the output directory
-			console.log('interfaceName:', interfaceName);
-			console.log('options:', options);
-			// genInterface(
-			// 	options.input,
-			// 	options.output,
-			// 	`${interfaceName}.ts`,
-			// 	interfaceName
-			// );
+			genInterface(
+				options.input,
+				options.output,
+				`${interfaceName}.ts`,
+				interfaceName
+			);
 		}
 	);
 
