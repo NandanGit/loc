@@ -1,8 +1,6 @@
-// const fs = require('fs');
-// const path = require('path');
-import { TranslationsJSON } from '@nandn/loc/dist/types/Translations';
 import fs from 'fs';
 import path from 'path';
+import { TranslationsJSON } from '../../types/Translations';
 
 path.join(__dirname, '../src/locales/en.json');
 
@@ -19,7 +17,6 @@ const genInterface = (
 	const translations: TranslationsJSON = JSON.parse(
 		fs.readFileSync(sourcePath, 'utf8')
 	);
-	console.log('translations:', translations);
 
 	const interfaceContent = `export interface ${interfaceName} {
   ${Object.keys(translations)
@@ -44,7 +41,6 @@ const genInterface = (
 		})
 		.join('\n\n  ')}
 }`;
-	console.log('interfaceContent:', interfaceContent);
 
 	if (!fs.existsSync(destDir)) {
 		fs.mkdirSync(destDir, { recursive: true });
@@ -52,6 +48,10 @@ const genInterface = (
 
 	const destPath = path.join(destDir, filename);
 	fs.writeFileSync(destPath, interfaceContent, 'utf8');
+
+	console.log(
+		`Interface with name '${interfaceName}' generated at: ${destPath}`
+	);
 };
 
 export default genInterface;
