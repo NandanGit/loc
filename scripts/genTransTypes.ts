@@ -3,7 +3,7 @@
 // import { TranslationsJSON } from '@nandn/loc/dist/types/Translations';
 // import fs from 'fs';
 import path from 'path';
-import genInterface from '../src/cli/generators/genInterface';
+import genEntity from '../src/cli/generators/genEntity';
 
 // path.join(__dirname, '../src/locales/en.json');
 
@@ -61,7 +61,7 @@ import genInterface from '../src/cli/generators/genInterface';
 // 	path.join(__dirname, '../playground/src/types')
 // );
 
-genInterface(
+genEntity(
 	path.join(__dirname, '../playground/src/assets/l10n/en.json'),
 	path.join(__dirname, '../playground/src/types')
 );
