@@ -31,7 +31,7 @@ const genEntity = (
 		entityType === 'interface' ? '' : '= '
 	}{
   ${Object.keys(translations)
-		.filter((key) => !key.startsWith('@'))
+		.filter((key) => !(key.startsWith('@') || key.startsWith('$')))
 		.map((key) => {
 			const value = translations[key];
 			if (typeof value === 'string') {
