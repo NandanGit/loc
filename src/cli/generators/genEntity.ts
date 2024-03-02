@@ -38,6 +38,7 @@ const genEntity = (
 			if (typeof value === 'string') {
 				const docComment = `/** 
    * ${value || ''}
+   *
    * No description provided
    */\n  `;
 				return docComment + `${key}: string;`;
@@ -49,6 +50,7 @@ const genEntity = (
 			} = value || {};
 			const docComment = `/** 
    * ${text}
+   *
    * ${description}
    */\n  `;
 			return (
