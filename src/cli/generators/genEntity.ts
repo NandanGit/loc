@@ -4,12 +4,21 @@ import { TranslationsJSON } from '../../types/Translations';
 
 path.join(__dirname, '../src/locales/en.json');
 
-const genInterface = (
+const genEntity = (
 	sourcePath: string,
 	destDir: string,
-	filename = 'Loc.ts',
-	interfaceName = 'Loc'
+	options?: {
+		filename?: string;
+		entityType?: 'interface' | 'type';
+		entityName?: string;
+	}
 ) => {
+	const {
+		filename = 'Loc.ts',
+		entityType = 'interface',
+		entityName = 'Loc',
+	} = options || {};
+	// filename
 	if (!fs.existsSync(sourcePath)) {
 		console.error(`File not found: ${sourcePath}`);
 		return;
@@ -18,7 +27,9 @@ const genInterface = (
 		fs.readFileSync(sourcePath, 'utf8')
 	);
 
-	const interfaceContent = `export interface ${interfaceName} {
+	const interfaceContent = `export ${entityType} ${entityName} ${
+		entityType === 'interface' ? '' : '= '
+	}{
   ${Object.keys(translations)
 		.filter((key) => !key.startsWith('@'))
 		.map((key) => {
@@ -26,17 +37,26 @@ const genInterface = (
 			if (typeof value === 'string') {
 				const docComment = `/** 
    * ${value || ''}
+   * No description provided
    */\n  `;
 				return docComment + `${key}: string;`;
 			}
+			const {
+				text = '',
+				placeholders = [],
+				description = 'No description provided',
+			} = value || {};
 			const docComment = `/** 
-   * ${value?.text || ''}
+   * ${text}
+   * ${description}
    */\n  `;
 			return (
 				docComment +
-				`${key}: (${value?.placeholders
-					.map((p) => `${p}: string`)
-					.join(', ')}) => string;`
+				(placeholders.length
+					? `${key}: (${placeholders
+							.map((p) => `${p}: string`)
+							.join(', ')}) => string;`
+					: `${key}: string;`)
 			);
 		})
 		.join('\n\n  ')}
@@ -49,9 +69,7 @@ const genInterface = (
 	const destPath = path.join(destDir, filename);
 	fs.writeFileSync(destPath, interfaceContent, 'utf8');
 
-	console.log(
-		`Interface with name '${interfaceName}' generated at: ${destPath}`
-	);
+	console.log(`Interface with name '${entityName}' generated at: ${destPath}`);
 };
 
-export default genInterface;
+export default genEntity;
