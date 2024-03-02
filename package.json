@@ -1,6 +1,6 @@
 {
 	"name": "@nandn/loc",
-	"version": "0.6.2",
+	"version": "0.6.3",
 	"description": "A package for localization",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
