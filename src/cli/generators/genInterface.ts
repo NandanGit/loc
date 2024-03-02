@@ -26,17 +26,26 @@ const genInterface = (
 			if (typeof value === 'string') {
 				const docComment = `/** 
    * ${value || ''}
+   * No description provided
    */\n  `;
 				return docComment + `${key}: string;`;
 			}
+			const {
+				text = '',
+				placeholders = [],
+				description = 'No description provided',
+			} = value || {};
 			const docComment = `/** 
-   * ${value?.text || ''}
+   * ${text}
+   * ${description}
    */\n  `;
 			return (
 				docComment +
-				`${key}: (${value?.placeholders
-					.map((p) => `${p}: string`)
-					.join(', ')}) => string;`
+				(placeholders.length
+					? `${key}: (${placeholders
+							.map((p) => `${p}: string`)
+							.join(', ')}) => string;`
+					: `${key}: string;`)
 			);
 		})
 		.join('\n\n  ')}

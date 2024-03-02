@@ -10,7 +10,8 @@
 		"prepare": "npm run build"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"schemas"
 	],
 	"bin": {
 		"loc": "dist/cli/index.js"

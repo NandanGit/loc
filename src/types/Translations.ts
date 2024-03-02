@@ -11,5 +11,6 @@ export type TranslationsJSON<L extends string = string> = {
 
 export interface TranslationConfig {
 	text: string;
-	placeholders: string[];
+	placeholders?: string[];
+	description?: string;
 }

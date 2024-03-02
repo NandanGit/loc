@@ -51,14 +51,18 @@ export const LocalizationProvider: React.FC<LocalizationContextProps> = ({
 			finalTranslations[key] = translation;
 			continue;
 		}
+		if (!translation.placeholders) {
+			finalTranslations[key] = translation.text;
+			continue;
+		}
 		let returnString = translation.text;
-		for (const placeholder of translation.placeholders) {
+		for (const placeholder of translation.placeholders || []) {
 			returnString = returnString.replace(
 				new RegExp(`{${placeholder}}`, 'g'),
 				`\${${placeholder}}`
 			);
 		}
-		const fnTemplate = `(${translation.placeholders.join(
+		const fnTemplate = `(${(translation.placeholders || []).join(
 			', '
 		)}) => \`${returnString}\``;
 		finalTranslations[key] = eval(fnTemplate);

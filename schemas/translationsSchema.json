@@ -1,0 +1,50 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"@locale": {
+			"type": "string"
+		},
+		"@version": {
+			"type": "string"
+		},
+		"@author": {
+			"type": "string"
+		},
+		"@createdAt": {
+			"type": "string"
+		},
+		"@modifiedAt": {
+			"type": "string"
+		},
+		"@description": {
+			"type": "string"
+		}
+	},
+	"required": ["@locale"],
+	"additionalProperties": {
+		"oneOf": [
+			{
+				"type": "string"
+			},
+			{
+				"type": "object",
+				"properties": {
+					"text": {
+						"type": "string"
+					},
+					"placeholders": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"description": {
+						"type": "string"
+					}
+				},
+				"required": ["text"]
+			}
+		]
+	}
+}
