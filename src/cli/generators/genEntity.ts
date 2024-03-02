@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { TranslationsJSON } from '../../types/Translations';
+import { capitalize } from '../../utils/string';
 
 path.join(__dirname, '../src/locales/en.json');
 
@@ -69,7 +70,11 @@ const genEntity = (
 	const destPath = path.join(destDir, filename);
 	fs.writeFileSync(destPath, interfaceContent, 'utf8');
 
-	console.log(`Interface with name '${entityName}' generated at: ${destPath}`);
+	console.log(
+		`${capitalize(
+			entityType
+		)} with name '${entityName}' generated at: ${destPath}`
+	);
 };
 
 export default genEntity;
