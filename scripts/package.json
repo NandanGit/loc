@@ -11,6 +11,7 @@
 	"author": "Nandan Reddy",
 	"license": "ISC",
 	"dependencies": {
+		"@nandn/loc": "^0.5.0",
 		"@types/node": "^20.11.20",
 		"nodemon": "^3.1.0",
 		"ts-node": "^10.9.2"
