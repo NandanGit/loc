@@ -1,4 +1,5 @@
-#@nandn/loc
+# @nandn/loc
+
 A lightweight localisation library for React.
 
 Features:
@@ -133,7 +134,7 @@ const MyComponent = () => {
 >    	// ...
 >    	"scripts": {
 >    		// ...
->    		"gen-interface": "loc gen-interface <interface_name> -i path/to/locales.json -o path/to/output/dir"
+>    		"gen-interface": "loc gen-interface <interface_name> -i path/to/en.json -o path/to/output/dir"
 >    	}
 >    	// ...
 >    }
